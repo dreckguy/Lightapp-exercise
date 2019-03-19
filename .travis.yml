@@ -13,3 +13,6 @@ install:
    - npm install
 script:
   - npm test
+after_script:
+ - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+ - docker build -t $DOCKER_IMAGE
