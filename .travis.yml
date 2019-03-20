@@ -18,5 +18,12 @@ after_script:
  - docker build -t $DOCKER_IMAGE
  - docker push -t $DOCKER_IMAGE
 deploy:
+<<<<<<< HEAD
  - apt-get install sshpass
  - sshpass -p $MACHINE_PASSWORD ssh -o StrictHostKeyChecking=no $MACHINE_USER@$MACHINE_ADDRESS sh deploy.sh
+=======
+ - echo $MACHINE_KEY > machine.pem
+ - cat machine.pem
+
+ 
+>>>>>>> use machine key
