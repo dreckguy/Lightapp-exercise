@@ -17,6 +17,3 @@ before_deploy:
  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
  - docker build -t $DOCKER_IMAGE
  - docker push -t $DOCKER_IMAGE
-deploy:
- - echo $MACHINE_KEY > machine.pem
- - cat machine.pem
