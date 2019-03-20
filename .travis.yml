@@ -12,10 +12,11 @@ install:
    - npm install
 script:
   - npm test
-before_deploy:
+after_script:
  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
  - docker build -t $DOCKER_IMAGE .
  - docker push $DOCKER_IMAGE
-deploy:
-  provider: script
-  script: bash deploy.sh
+before_deploy:
+ - echo $MACHINE_KEY > MACHINE_KEY.pem
+ - scp -i MACHINE_KEY.pem -o "StrictHostKeyChecking no" docker-compose.yml MACHINE_USER@MACHINE_ADDRESS:~/
+ - rm -f MACHINE_KEY.pem
