@@ -20,5 +20,3 @@ after_script:
 deploy:
  - echo $MACHINE_KEY > machine.pem
  - cat machine.pem
-
- 
